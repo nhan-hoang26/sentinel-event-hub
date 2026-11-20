@@ -1,6 +1,6 @@
 # Sentinel Event Hub
 
-**Status:** 21 tests passed locally · CI workflow template included
+**Status:** 21 tests passed · Docker build and container smoke passed · CI workflow template included
 
 A small, testable camera-event triage service: receive detections, assign priority, and let an operator acknowledge incidents without losing history.
 

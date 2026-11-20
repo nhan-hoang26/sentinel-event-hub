@@ -8,6 +8,11 @@ Run on 2026-11-20 with Python 3.11.7 on macOS ARM64.
 - Browser check: connected with local API key, generated 12 events, filtered critical events, acknowledged one; critical/open changed from 2 to 1 and the acknowledged row remained visible.
 - Screenshot: `docs/dashboard.jpg` shows this browser-verified state.
 
-Docker and GitHub CI results are recorded below when verified. These checks establish functional behavior for a prototype, not production throughput, AI accuracy, fault tolerance, or security certification.
+Docker and GitHub CI results: These checks establish functional behavior for a prototype, not production throughput, AI accuracy, fault tolerance, or security certification.
 
 - GitHub Actions: not activated. Publishing credential lacks `workflow` scope; workflow is supplied as `docs/ci/github-actions.yml` for manual activation.
+
+- `docker build -t sentinel-event-hub:local .`: passed (Linux ARM64 image).
+- Container HTTP smoke: health, 201 ingestion, 200 duplicate retry, acknowledgement and summary passed.
+- Container process identity: uid=1000(sentinel), gid=1000(sentinel), non-root.
+- Restarted the container; event and acknowledgement remained stored. This checks restart persistence, not host/disk failure recovery.

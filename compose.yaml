@@ -1,0 +1,13 @@
+services:
+  sentinel:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      SENTINEL_API_KEY: ${SENTINEL_API_KEY:?Set SENTINEL_API_KEY in .env}
+      DATABASE_PATH: /service/data/sentinel.db
+    volumes:
+      - sentinel-data:/service/data
+    restart: unless-stopped
+volumes:
+  sentinel-data:
